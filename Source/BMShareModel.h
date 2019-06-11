@@ -25,8 +25,8 @@ typedef NS_ENUM(NSInteger,BMSharePlatformType) {
 #define K_SharePlatformWechatSession        @"WechatSession"
 #define K_SharePlatformWechatTimeLine       @"WechatTimeLine"
 #define K_SharePlatformWechatFavorite       @"WechatFavorite"
-#define K_SharePlatformQQ                   @"QQ"
-#define K_SharePlatformQzone                @"Qzone"
+#define K_SharePlatformQQ                   @"qq"
+#define K_SharePlatformQzone                @"zone"
 #define K_SharePlatformPasteboard           @"Pasteboard"
 #define K_SharePlatformFontSize             @"FontSize"
 

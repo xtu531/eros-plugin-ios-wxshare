@@ -20,6 +20,14 @@
     {
         _platform = BMSharePlatformType_WechatTimeLine;
     }
+    else if ([platform isEqualToString:K_SharePlatformQQ])
+    {
+        _platform = BMSharePlatformType_QQ;
+    }
+    else if ([platform isEqualToString:K_SharePlatformQzone])
+    {
+        _platform = BMSharePlatformType_Qzone;
+    }
     
     NSString *type = dic[@"shareType"];
     if ([type isEqualToString:K_ShareTypeText]) {

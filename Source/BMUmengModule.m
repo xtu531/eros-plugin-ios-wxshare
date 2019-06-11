@@ -30,6 +30,7 @@ WX_PlUGIN_EXPORT_MODULE(bmWXShare, BMUmengModule)
 WX_EXPORT_METHOD_SYNC(@selector(isInstallWXApp))
 WX_EXPORT_METHOD_SYNC(@selector(initUM:))
 WX_EXPORT_METHOD_SYNC(@selector(initWX:))
+WX_EXPORT_METHOD_SYNC(@selector(initQQ:))
 WX_EXPORT_METHOD(@selector(share:successCallback:failedCallback:))
 WX_EXPORT_METHOD(@selector(authLogin:))
 
@@ -62,6 +63,18 @@ WX_EXPORT_METHOD(@selector(authLogin:))
     [UMSocialGlobal shareInstance].isUsingHttpsWhenShareContent = NO;
 }
 
+- (void)initQQ:(NSDictionary *)info
+{
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession
+                                          appKey:info[@"appKey"]
+                                       appSecret:nil
+                                     redirectURL:nil];
+    
+    //    [WXApi registerApp:info[@"appKey"]];
+    
+    [UMSocialGlobal shareInstance].isUsingHttpsWhenShareContent = NO;
+}
+
 /** 分享 */
 - (void)share:(NSDictionary *)info successCallback:(WXModuleCallback)successCallback failedCallback:(WXModuleCallback)failedCallback
 {
@@ -88,6 +101,16 @@ WX_EXPORT_METHOD(@selector(authLogin:))
     else if (model.platform == BMSharePlatformType_WechatTimeLine)
     {
         platformType = UMSocialPlatformType_WechatTimeLine;
+    }
+    //QQ
+    else if (model.platform == BMSharePlatformType_QQ)
+    {
+        platformType = UMSocialPlatformType_QQ;
+    }
+    //QQ空间
+    else if (model.platform == BMSharePlatformType_Qzone)
+    {
+        platformType = UMSocialPlatformType_Qzone;
     }
     
     /** 分享类型 */
